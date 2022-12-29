@@ -9,8 +9,9 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
  
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Test Window", NULL, NULL);
-    if (window == NULL) {
+    GLFWwindow* window = glfwCreateWindow(800, 600, "Test Window", NULL, NULL); // createWindow
+    if (window == NULL) 
+    {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
@@ -18,13 +19,14 @@ int main() {
  
     glfwMakeContextCurrent(window);
  
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) 
+    {
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
  
-    while (!glfwWindowShouldClose(window)) {
-        
+    while (!glfwWindowShouldClose(window)) 
+    {
         glfwPollEvents();
  
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
