@@ -3,6 +3,6 @@
     
 # how to run
     1) cd into bin
-    2) type mingw32-make
-    3) ./main.exe
+    2) type: mingw32-make
+    3) type: main.exe
 
