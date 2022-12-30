@@ -24,5 +24,9 @@
     README.md
 
 # links
-GLFW: https://www.glfw.org/
-GLAD: https://glad.dav1d.de/
+GLFW: 
+    - https://www.glfw.org/
+    - https://www.glfw.org/docs/3.3/quick.html
+GLAD: 
+    - https://glad.dav1d.de/
+

@@ -1,40 +1,40 @@
-#include <glad/glad.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
- 
-#include <iostream>
- 
-int main() {
-    glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
- 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Test Window", NULL, NULL); // createWindow
-    if (window == NULL) 
+#include <stdio.h>
+
+int main(){
+    // start GL context and O/S window using the GLFW helper library
+    if (!glfwInit()) // check GLFW_TRUE or GLFW_FALSE
     {
-        std::cout << "Failed to create GLFW window" << std::endl;
+        fprintf(stderr, "ERROR: could not start GLFW3\n");
+        return 1; 
+    }
+
+    GLFWwindow* window = glfwCreateWindow(640, 480, "Hello Triangle", NULL, NULL);
+    if(!window)
+    {
+        fprintf(stderr, "ERROR: could not open window with GLFW3\n");
         glfwTerminate();
-        return -1;
+        return 1;
     }
- 
     glfwMakeContextCurrent(window);
- 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) 
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
-    }
- 
-    while (!glfwWindowShouldClose(window)) 
-    {
-        glfwPollEvents();
- 
-        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
- 
-        glfwSwapBuffers(window);
-    }
- 
+
+    // start GLEW extension handler
+    glewExperimental = GL_TRUE;
+    glewInit();
+
+    // get verison info
+    const GLubyte* renderer = glGetString(GL_RENDERER);
+    const GLubyte* version  = glGetString(GL_VERSION);
+    printf("Renderer: %s\n", renderer);
+    printf("OpenGL version supported %s\n", version);
+
+
+    // tell GL to only draw onto a pixel if the shape is closer to the viewer
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+
+    // close GL context and any other GLFW resources
     glfwTerminate();
     return 0;
 }

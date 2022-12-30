@@ -1,0 +1,10 @@
+Starting the GL Context With GLFW and GLEW
+
+        GLFW:
+            -  A helper library that will start the OpenGL "context". This, allows us to 
+            talk with any operating system in the same way.
+
+            Context: 
+                - a running copy of opengl, tied to a window on the operating system.
+            
+            
